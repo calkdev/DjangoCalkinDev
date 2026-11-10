@@ -1,0 +1,37 @@
+# Google App Engine settings for the site.
+#
+# Copy this file to app.yaml and fill in every <...> value:
+#     cp app.yaml.example app.yaml
+# app.yaml has the real passwords in it, so it is in .gitignore and never
+# goes on GitHub. This example file is the one that gets committed.
+
+runtime: python313
+entrypoint: sh start.sh
+instance_class: F1
+
+# One copy of the site at most. Plenty for a portfolio, keeps it inside the
+# free tier, and means only one start.sh is running migrations at a time.
+automatic_scaling:
+  max_instances: 1
+
+env_variables:
+  SECRET_KEY: "<a long random string>"
+  DB_NAME: "calkindev"
+  DB_USER: "calkindev"
+  DB_PASSWORD: "<the password you gave the calkindev database user>"
+  CLOUD_SQL_CONNECTION_NAME: "<project-id>:australia-southeast1:calkindev-db"
+  DJANGO_SUPERUSER_USERNAME: "<admin username>"
+  DJANGO_SUPERUSER_EMAIL: "<your email>"
+  DJANGO_SUPERUSER_PASSWORD: "<admin password>"
+
+handlers:
+# collectstatic copies every css, js and image file into staticfiles/, and App
+# Engine serves that folder at /static/ by itself, without going through Django
+- url: /static
+  static_dir: staticfiles/
+  secure: always
+
+# Everything else goes to Django. secure: always sends http visitors to https.
+- url: /.*
+  script: auto
+  secure: always

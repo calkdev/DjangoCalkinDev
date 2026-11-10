@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CalkinDev | Software Engineer{% endblock %}
+
+{% block content %}
+
+  <!-- Hero -->
+  <section class="hero is-fullheight hero-banner" id="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="hero-logo-wrapper">
+          <svg class="hero-svg-title" viewBox="0 0 960 300" role="img" aria-label="CalkinDev">
+            <symbol id="s-text">
+              <text font-size="10.5em" font-family="Oswald, sans-serif">
+                <tspan x="265" y="240">alkin</tspan>
+                <tspan x="645" y="240">ev</tspan>
+              </text>
+            </symbol>
+            <use xlink:href="#s-text" class="text-base"></use>
+            <g class="g-ants">
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+            </g>
+            <image href="{% static 'images/logo-C.png' %}" x="180" y="120" width="82" height="110" preserveAspectRatio="xMidYMid meet" />
+            <image href="{% static 'images/logo-D.png' %}" x="558" y="120" width="84" height="110" preserveAspectRatio="xMidYMid meet" />
+          </svg>
+        </div>
+        <p class="subtitle is-4 hero-subtitle mt-3">Software Engineer</p>
+        <div class="hero-actions mt-5">
+          <a href="#projects" class="button hero-btn-primary">View projects</a>
+          <a href="#contact" class="button hero-btn-ghost">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About, kept as plain HTML from the old index.html -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <h2 class="title is-2 section-title">About Me</h2>
+
+      <div class="card about-card mb-5">
+        <div class="card-content">
+          <h3 class="title is-4 card-heading">Profile</h3>
+          <p class="card-text">
+            I'm a passionate full-stack developer specializing in building scalable, user-focused applications across the entire
+            technology stack. With hands-on experience in C++, C#, Python, and modern JavaScript frameworks, I bring a
+            versatile skill set to every project. I'm committed to writing clean, maintainable code and following industry best
+            practices. From backend APIs to responsive frontends, I enjoy tackling challenges that require both technical depth
+            and creative problem-solving. Currently seeking opportunities to contribute to innovative teams building impactful
+            software solutions.
+          </p>
+        </div>
+      </div>
+
+      <div class="card about-card mb-5">
+        <div class="card-content">
+          <h3 class="title is-4 card-heading">Technical Skills</h3>
+          <div class="columns is-multiline">
+            <div class="column is-4">
+              <h4 class="subtitle is-6 skill-category">Frontend</h4>
+              <div class="tags skill-tags">
+                <span class="tag">TypeScript</span>
+                <span class="tag">React Native</span>
+                <span class="tag">Expo</span>
+                <span class="tag">Vite</span>
+                <span class="tag">SCSS/Sass</span>
+                <span class="tag">Bulma</span>
+                <span class="tag">Tailwind</span>
+              </div>
+            </div>
+            <div class="column is-4">
+              <h4 class="subtitle is-6 skill-category">Backend</h4>
+              <div class="tags skill-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Django REST</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Socket.IO</span>
+                <span class="tag">S3 storage</span>
+              </div>
+            </div>
+            <div class="column is-4">
+              <h4 class="subtitle is-6 skill-category">Tools &amp; Infra</h4>
+              <div class="tags skill-tags">
+                <span class="tag">Git</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">Docker</span>
+                <span class="tag">nginx</span>
+                <span class="tag">Render</span>
+                <span class="tag">Vercel</span>
+                <span class="tag">Cloudflare</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card about-card">
+        <div class="card-content">
+          <h3 class="title is-4 card-heading">Experience Timeline</h3>
+          <div class="timeline">
+            <div class="timeline-entry">
+              <span class="timeline-marker"></span>
+              <div>
+                <p class="timeline-when">2024 - PRESENT</p>
+                <p class="timeline-what">Full-stack development projects</p>
+              </div>
+            </div>
+            <div class="timeline-entry">
+              <span class="timeline-marker"></span>
+              <div>
+                <p class="timeline-when">2023</p>
+                <p class="timeline-what">Learning modern web technologies</p>
+              </div>
+            </div>
+            <div class="timeline-entry">
+              <span class="timeline-marker"></span>
+              <div>
+                <p class="timeline-when">Earlier</p>
+                <p class="timeline-what">Foundation in computer science</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects, from the database -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+      <div class="has-text-centered mb-6">
+        <h2 class="title is-2 section-title">Featured Projects</h2>
+        <p class="subtitle is-5 has-text-grey">A closer look at what I've been building</p>
+      </div>
+
+      <div class="columns is-centered is-multiline">
+        {% for project in projects %}
+          <div class="column is-6">
+            <article class="project-card">
+              <div class="project-card-header">
+                {% if project.category %}<span class="project-kicker">{{ project.category }}</span>{% endif %}
+                <h3 class="project-name">{{ project.title }}</h3>
+              </div>
+              <div class="project-card-body">
+                <p class="project-summary">{{ project.summary }}</p>
+                <div class="tags project-tags">
+                  {% for tech in project.tech_list %}
+                    <span class="tag">{{ tech }}</span>
+                  {% endfor %}
+                </div>
+                <p class="project-status">
+                  <span class="status-dot status-{{ project.status }}"></span>
+                  {{ project.get_status_display }}
+                </p>
+              </div>
+            </article>
+          </div>
+        {% empty %}
+          <div class="column is-8 has-text-centered">
+            <p class="has-text-grey">No projects have been added yet.</p>
+          </div>
+        {% endfor %}
+      </div>
+      <p class="has-text-centered mt-5">
+        <a href="{% url 'portfolio:project_list' %}" class="button hero-btn-ghost">All projects</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Latest blog posts, from the database -->
+  {% if posts %}
+    <section class="section blog-section" id="blog">
+      <div class="container">
+        <div class="has-text-centered mb-6">
+          <h2 class="title is-2 section-title">Latest from the Blog</h2>
+          <p class="subtitle is-5 has-text-grey">Notes on what I'm building and learning</p>
+        </div>
+        <div class="post-list">
+          {% for post in posts %}
+            <a class="blog-card" href="{{ post.get_absolute_url }}">
+              <p class="blog-card-date">{{ post.published_date|date:"j M Y" }}</p>
+              <h3 class="blog-card-title">{{ post.title }}</h3>
+              <span class="blog-card-more">Read post ></span>
+            </a>
+          {% endfor %}
+        </div>
+        <p class="has-text-centered mt-5">
+          <a href="{% url 'blog:post_list' %}" class="button hero-btn-ghost">All posts</a>
+        </p>
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- Contact -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="has-text-centered mb-6">
+        <h2 class="title is-2 section-title">Let's Connect</h2>
+        <p class="subtitle is-5 contact-subtitle">
+          Have a project in mind or just want to chat? Drop me a message and I'll get back to you within 24 hours.
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-6">
+
+          {# The "Message sent" message from the view, shown here so it is next to the form #}
+          {% for message in messages %}
+            <div class="notification is-success">{{ message }}</div>
+          {% endfor %}
+
+          <form method="post" action="{% url 'portfolio:home' %}#contact" class="contact-form" novalidate>
+            {% csrf_token %}
+
+            <div class="field">
+              <label class="label" for="{{ form.name.id_for_label }}">Name <span class="has-text-danger">*</span></label>
+              <div class="control">{{ form.name }}</div>
+              {% if form.name.errors %}<p class="help is-danger">{{ form.name.errors|striptags }}</p>{% endif %}
+            </div>
+
+            <div class="field">
+              <label class="label" for="{{ form.email.id_for_label }}">Email <span class="has-text-danger">*</span></label>
+              <div class="control">{{ form.email }}</div>
+              {% if form.email.errors %}<p class="help is-danger">{{ form.email.errors|striptags }}</p>{% endif %}
+            </div>
+
+            <div class="field">
+              <label class="label" for="{{ form.subject.id_for_label }}">Subject <span class="has-text-grey">(optional)</span></label>
+              <div class="control">{{ form.subject }}</div>
+              {% if form.subject.errors %}<p class="help is-danger">{{ form.subject.errors|striptags }}</p>{% endif %}
+            </div>
+
+            <div class="field">
+              <label class="label" for="{{ form.message.id_for_label }}">Message <span class="has-text-danger">*</span></label>
+              <div class="control">{{ form.message }}</div>
+              {% if form.message.errors %}<p class="help is-danger">{{ form.message.errors|striptags }}</p>{% endif %}
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-link is-fullwidth submit-btn">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

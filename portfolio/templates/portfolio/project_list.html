@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects | CalkinDev{% endblock %}
+{% block description %}Every project CalkinDev has built, live and in development.{% endblock %}
+
+{% block content %}
+<section class="section blog-index-section">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <h1 class="title is-2 section-title">Projects</h1>
+      <p class="subtitle is-5 has-text-grey">Everything, including work still in progress</p>
+    </div>
+
+    <div class="columns is-centered is-multiline">
+      {% for project in projects %}
+        <div class="column is-6">
+          <article class="project-card">
+            <div class="project-card-header">
+              {% if project.category %}<span class="project-kicker">{{ project.category }}</span>{% endif %}
+              <h2 class="project-name">{{ project.title }}</h2>
+            </div>
+            <div class="project-card-body">
+              <p class="project-summary">{{ project.summary }}</p>
+              <div class="tags project-tags">
+                {% for tech in project.tech_list %}
+                  <span class="tag">{{ tech }}</span>
+                {% endfor %}
+              </div>
+              <p class="project-status">
+                <span class="status-dot status-{{ project.status }}"></span>
+                {{ project.get_status_display }}
+              </p>
+            </div>
+          </article>
+        </div>
+      {% empty %}
+        <div class="column is-8 has-text-centered">
+          <p class="has-text-grey">No projects have been added yet.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

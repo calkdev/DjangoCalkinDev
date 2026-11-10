@@ -1,0 +1,7 @@
+// Single stylesheet for the Django site. Sass de-duplicates the shared bulma
+// import, so this bundles the whole site into one file instead of shipping
+// bulma once per page-specific stylesheet.
+@use "main";
+@use "blog";
+@use "login";
+@use "django";

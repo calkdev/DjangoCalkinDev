@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} | CalkinDev Blog{% endblock %}
+
+{% block content %}
+<section class="section post-detail-section">
+  <div class="container post-detail-container">
+
+    <p class="meta">{{ post.published_date|date:"j F Y" }}</p>
+    <h1 class="title is-2 post-title">{{ post.title }}</h1>
+
+    {# |safe because only I write posts, in the admin, so this HTML can be trusted #}
+    <article class="post-body">
+      {{ post.body_html|safe }}
+    </article>
+
+    <div class="post-footer">
+      <a href="{% url 'blog:post_list' %}">&lt; All posts</a>
+      <a href="{% url 'portfolio:home' %}#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+# Files that "gcloud app deploy" should NOT upload to App Engine.
+#
+# This deliberately does not include .gitignore: .gitignore leaves out
+# staticfiles/, but App Engine needs that folder to serve the css, js and
+# images (see the /static handler in app.yaml).
+
+.gcloudignore
+.git/
+.gitignore
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Not needed to run the site
+_original_vite/
+src/
+node_modules/
+*.md
+app.yaml.example

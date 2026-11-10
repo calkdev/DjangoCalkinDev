@@ -1,0 +1,26 @@
+[
+  {
+    "model": "portfolio.project",
+    "pk": 1,
+    "fields": {
+      "title": "OurRoom",
+      "category": "Web ~ Realtime",
+      "summary": "A private shared space for two people - realtime messaging with voice notes and reactions, WebRTC calls, shared files, playlists, notes and calendar. Flask + Socket.IO on Render with Neon Postgres, S3 object storage, and push notifications to web and Android.",
+      "tech_stack": "Flask, Socket.IO, PostgreSQL, WebRTC, S3, Render",
+      "status": "live",
+      "created_at": "2026-07-17T09:00:00Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Rebuilding calkindev.nz",
+      "slug": "rebuilding-calkindev-nz",
+      "body": "This site had been sitting untouched for a while, so I gave it a proper refresh. Not a rewrite - the stack is still Vite, TypeScript and SCSS with Bulma underneath - but a round of changes that make it feel finished rather than scaffolded.\n",
+      "published": true,
+      "published_date": "2026-07-17",
+      "created_at": "2026-07-17T09:00:00Z"
+    }
+  }
+]

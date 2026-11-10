@@ -1,0 +1,21 @@
+# Render blueprint — static portfolio site.
+# The blog build runs via the "prebuild" hook in package.json, so `npm run build`
+# produces dist/ with the generated /blog pages included.
+services:
+  - type: web
+    name: calkindev
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: NODE_VERSION
+        value: 22.15.0
+    domains:
+      - calkindev.nz
+      - www.calkindev.nz
+    headers:
+      # hashed bundle filenames are safe to cache forever
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

@@ -1,0 +1,30 @@
+# ── Python / Django ──
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+staticfiles/
+
+# ── Secrets and local config ──
+# app.yaml has the real passwords in it, app.yaml.example is the one to commit
+app.yaml
+.env
+*.env
+
+# ── Logs ──
+*.log
+
+# ── Node (only used to compile the SCSS, not needed at runtime) ──
+node_modules/
+**/node_modules
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── Editors ──
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.sublime-workspace

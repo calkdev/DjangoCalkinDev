@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% comment %}
+  Django uses this automatically for any 404 once DEBUG is off, so the
+  deployed site keeps its own look instead of the bare "Not Found" page.
+  Locally, with DEBUG on, Django shows its debug page instead.
+{% endcomment %}
+
+{% block title %}Page not found | CalkinDev{% endblock %}
+
+{% block content %}
+<section class="section blog-index-section">
+  <div class="container has-text-centered">
+    <h1 class="title is-2 section-title">Page not found</h1>
+    <p class="subtitle is-5 has-text-grey">That page doesn't exist, or it isn't published yet.</p>
+    <p class="mt-5">
+      <a href="{% url 'portfolio:home' %}" class="button hero-btn-primary">Back to home</a>
+      <a href="{% url 'blog:post_list' %}" class="button hero-btn-ghost">Read the blog</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
